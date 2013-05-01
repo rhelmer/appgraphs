@@ -19,9 +19,9 @@ $(function() {
 function graph(seriesData) {
     var graph = new Rickshaw.Graph({
         element: document.getElementById('chart'),
-        width: 960,
-        height: 500,
         renderer: 'scatterplot',
+        height: 300,
+        width: 800,
         series: [
             {
                 color: '#c05020',
