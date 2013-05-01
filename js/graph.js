@@ -24,53 +24,53 @@ $(function() {
 });
 
 function graph(seriesData) {
-    var graph = new Rickshaw.Graph( {
-        element: document.getElementById("chart"),
+    var graph = new Rickshaw.Graph({
+        element: document.getElementById('chart'),
         width: 960,
         height: 500,
         renderer: 'scatterplot',
         series: [
             {
-                color: "#c05020",
+                color: '#c05020',
                 data: seriesData,
                 name: 'Browser'
             }
         ]
-    } );
-    
+    });
+
     graph.render();
-    
-    var hoverDetail = new Rickshaw.Graph.HoverDetail( {
+
+    var hoverDetail = new Rickshaw.Graph.HoverDetail({
         graph: graph
-    } );
-    
-    var legend = new Rickshaw.Graph.Legend( {
+    });
+
+    var legend = new Rickshaw.Graph.Legend({
         graph: graph,
         element: document.getElementById('legend')
-    
-    } );
-    
-    var shelving = new Rickshaw.Graph.Behavior.Series.Toggle( {
+
+    });
+
+    var shelving = new Rickshaw.Graph.Behavior.Series.Toggle({
         graph: graph,
         legend: legend
-    } );
-    
-    var axes = new Rickshaw.Graph.Axis.Time( {
+    });
+
+    var axes = new Rickshaw.Graph.Axis.Time({
         graph: graph
-    } );
+    });
 
     axes.render();
 }
 
 function median(values) {
-    values.sort( function(a,b) {return a - b;} );
-  
-    var half = Math.floor(values.length/2);
-  
-    if(values.length % 2) {
+    values.sort(function(a, b) {return a - b;});
+
+    var half = Math.floor(values.length / 2);
+
+    if (values.length % 2) {
         return values[half];
     } else {
-        return (values[half-1] + values[half]) / 2.0;
+        return (values[half - 1] + values[half]) / 2.0;
     }
 }
 
