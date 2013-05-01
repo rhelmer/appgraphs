@@ -35,11 +35,13 @@ function graph(seriesData) {
         graph: graph
     });
 
+    var x_axis = new Rickshaw.Graph.Axis.Time( { graph: graph } );
+
     var y_ticks = new Rickshaw.Graph.Axis.Y( {
         graph: graph,
         orientation: 'left',
         tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
-        element: document.getElementById('y_axis'),
+        element: document.getElementById('y_axis')
     } );
 
     graph.render();
