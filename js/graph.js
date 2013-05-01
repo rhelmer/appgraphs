@@ -1,23 +1,16 @@
 $(function() {
 
+    // FIXME get this from datazilla pages JSON, 34 is "cold_load_time" test
+    var page_id = 34;
+
     $.getJSON('data/test_values.json', function(data) {
-        // there are multiple test runs per revision, aggregate these by rev
-        var by_rev = [];
+        // "page_id" is actually the test id
+        var seriesData = [];
         $.each(data, function(index, value) {
-            if (value.revision in by_rev) {
-                by_rev[value.revision].y.push(value.avg);
-            } else {
-                by_rev[value.revision] = {x: value.date_run,
-                                          y: [value.avg]};
+            if (value.page_id == page_id) {
+                seriesData.push({x: value.date_run, y: value.avg});
             }
         });
-
-        // prepare data for plotting - take median of individual runs
-        var seriesData = [];
-        for (var revision in by_rev) {
-            var value = by_rev[revision];
-            seriesData.push({x: value.x, y: median(value.y)});
-        }
 
         graph(seriesData);
     });
@@ -62,23 +55,3 @@ function graph(seriesData) {
     axes.render();
 }
 
-function median(values) {
-    values.sort(function(a, b) {return a - b;});
-
-    var half = Math.floor(values.length / 2);
-
-    if (values.length % 2) {
-        return values[half];
-    } else {
-        return (values[half - 1] + values[half]) / 2.0;
-    }
-}
-
-function max(values) {
-    return Math.max.apply(null, values);
-}
-
-function avg(values) {
-    var sum = value.reduce(function(a, b) { return a + b });
-    return sum / times.length;
-}
