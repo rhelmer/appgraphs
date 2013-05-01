@@ -1,21 +1,21 @@
 $(function() {
 
     $.getJSON('data/test_values.json', function(data) {
-        var by_revision = [];
+        // there are multiple test runs per revision, aggregate these by rev
+        var by_rev = [];
         $.each(data, function(index, value) {
-            if (value.revision in by_revision) {
-                by_revision[value.revision].y.push(value.avg);
+            if (value.revision in by_rev) {
+                by_rev[value.revision].y.push(value.avg);
             } else {
-                by_revision[value.revision] = {x: value.date_run,
+                by_rev[value.revision] = {x: value.date_run,
                                                y: [value.avg]};
             }
         });
 
+        // prepare data for plotting - take median of individual runs
         var seriesData = [];
-        for (var revision in by_revision) {
-            var value = by_revision[revision];
-            console.log(revision);
-            console.log(value);
+        for (var revision in by_rev) {
+            var value = by_rev[revision];
             seriesData.push({x: value.x, y: median(value.y)});
         }
 
@@ -28,7 +28,7 @@ function graph(seriesData) {
         element: document.getElementById("chart"),
         width: 960,
         height: 500,
-        renderer: 'line',
+        renderer: 'scatterplot',
         series: [
             {
                 color: "#c05020",
