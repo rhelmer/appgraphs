@@ -37,7 +37,7 @@ function graph(seriesData) {
 
     var x_axis = new Rickshaw.Graph.Axis.Time( { graph: graph } );
 
-    var y_ticks = new Rickshaw.Graph.Axis.Y( {
+    var y_axis = new Rickshaw.Graph.Axis.Y( {
         graph: graph,
         orientation: 'left',
         tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
