@@ -8,7 +8,7 @@ $(function() {
                 by_rev[value.revision].y.push(value.avg);
             } else {
                 by_rev[value.revision] = {x: value.date_run,
-                                               y: [value.avg]};
+                                          y: [value.avg]};
             }
         });
 
@@ -72,4 +72,13 @@ function median(values) {
     } else {
         return (values[half-1] + values[half]) / 2.0;
     }
+}
+
+function max(values) {
+    return Math.max.apply(null, values);
+}
+
+function avg(values) {
+    var sum = value.reduce(function(a, b) { return a + b });
+    return sum / times.length;
 }
