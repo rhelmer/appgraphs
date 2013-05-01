@@ -31,7 +31,7 @@ $(function() {
         console.log(series.last_date);
 
         if (series.last_value >= max_time) {
-            alert('warning - last test run took longer than ' + max_time +'ms');
+            $().toastmessage('showWarningToast', 'warning - last test run took longer than ' + max_time +'ms');
         }
 
         graph(series);
