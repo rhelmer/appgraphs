@@ -31,27 +31,16 @@ function graph(seriesData) {
         ]
     });
 
-    graph.render();
-
     var hoverDetail = new Rickshaw.Graph.HoverDetail({
         graph: graph
     });
 
-    var legend = new Rickshaw.Graph.Legend({
+    var y_ticks = new Rickshaw.Graph.Axis.Y( {
         graph: graph,
-        element: document.getElementById('legend')
+        orientation: 'left',
+        tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
+        element: document.getElementById('y_axis'),
+    } );
 
-    });
-
-    var shelving = new Rickshaw.Graph.Behavior.Series.Toggle({
-        graph: graph,
-        legend: legend
-    });
-
-    var axes = new Rickshaw.Graph.Axis.Time({
-        graph: graph
-    });
-
-    axes.render();
+    graph.render();
 }
-
