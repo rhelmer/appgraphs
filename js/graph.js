@@ -6,7 +6,7 @@ $(function() {
 
     $.getJSON('data/test_values.json', function(data) {
         // "page_id" is actually the test id
-        var series = {data: [], max: undefined, min: undefined, 
+        var series = {data: [], max: undefined, min: undefined,
                       last_date: undefined, last_value: undefined};
 
         $.each(data, function(index, value) {
@@ -30,7 +30,7 @@ $(function() {
         if (series.last_value >= max_time) {
             $().toastmessage('showToast', {
                 text: 'warning - last test run took longer than ' +
-                      max_time +'ms',
+                      max_time + 'ms',
                 sticky: true
             });
         }
