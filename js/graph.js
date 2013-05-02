@@ -27,9 +27,6 @@ $(function() {
             }
         });
 
-        console.log(series.last_value);
-        console.log(series.last_date);
-
         if (series.last_value >= max_time) {
             $().toastmessage('showToast', {
                 text: 'warning - last test run took longer than ' +
