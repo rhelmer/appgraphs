@@ -35,6 +35,7 @@ $(function() {
             });
         }
 
+        $('#loadingChart').hide();
         graph(series);
     });
 });
