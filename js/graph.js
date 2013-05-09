@@ -103,7 +103,13 @@ function graph(series) {
     g.selectAll("scatter-dots")
       .data(data)
       .enter().append("svg:circle")
-          .attr("cx", function (d,i) { return x(d[0]); } )
-          .attr("cy", function (d) { return y(d[1]); } )
-          .attr("r", 5);
+      .attr("cx", function (d,i) { return x(d[0]); } )
+      .attr("cy", function (d) { return y(d[1]); } )
+      .attr("r", 5)
+      .on("mouseover", function(d) {
+        $('.info').html(d[1] + 'ms, ' + new Date(d[0] * 1000));
+      })
+      .on("mouseout", function() {
+        $('.info').html('&nbsp;');
+      });
 }
