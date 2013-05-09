@@ -105,5 +105,5 @@ function graph(series) {
       .enter().append("svg:circle")
           .attr("cx", function (d,i) { return x(d[0]); } )
           .attr("cy", function (d) { return y(d[1]); } )
-          .attr("r", 8);
+          .attr("r", 5);
 }
